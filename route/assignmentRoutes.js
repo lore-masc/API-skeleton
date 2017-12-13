@@ -11,7 +11,6 @@ exports.sendAssignmentById = function (req, res) {
  	new_obj = new assignment(assignmentId, studentId, assignmentType, assignmentContent);
  	//console.log("NODE: " + JSON.stringify(new_obj));
 	Db.insert(new_obj);
-	res.sendStatus(200);
 	return res.json({message: 'Assignment aggiunto'});
 };
 
@@ -24,14 +23,11 @@ exports.getAllAssignments = function(req, res) {
 			if(all[i]['studentId'] == id)
 				list.push(all[i]);
 		if(list == []){
-			res.sendStatus(500);
 			return res.json({message: 'Student Id non trovato'});
 		}else{
-			res.sendStatus(200);
 			return res.json(list);
 		}
 	} else {
-		res.sendStatus(200);
 		return res.json(all);
 	}
 };
@@ -43,7 +39,6 @@ exports.getAssignmentById = function(req, res) {
 		res.sendStatus(200);
 		return res.json(Db.getById(id));
 	} else {
-		res.sendStatus(500);
 		return res.json({message: 'Assignment non trovato'});
 	}
 };
@@ -53,10 +48,8 @@ exports.removeAssignmentById = function(req, res) {
 	var found = Db.getById(id);
 	if (found !== undefined){
 		Db.removeById(id);
-		res.sendStatus(204);
 		return res.json({message: 'Assignment ' + id + ' eliminato'});
 	} else {
-		res.sendStatus(500);
 		return res.json({message: 'Assignment non trovato'});
 	}
 };
@@ -70,10 +63,8 @@ exports.updateAssignmentById = function(req, res) {
 		assignmentContent= req.body.assignment_content;
 		obj = new assignment(id, studentId, assignmentType, assignmentContent);
 		Db.updateById(id, obj);
-		res.sendStatus(204);
 		return res.json({message: 'Assignment ' + id + ' aggiornato'});
 	} else {
-		res.sendStatus(500);
 		return res.json({message: 'Assignment non trovato'});
 	}
 };
