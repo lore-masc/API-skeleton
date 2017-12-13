@@ -11,7 +11,8 @@ exports.sendAssignmentById = function (req, res) {
  	new_obj = new assignment(assignmentId, studentId, assignmentType, assignmentContent);
  	//console.log("NODE: " + JSON.stringify(new_obj));
 	Db.insert(new_obj);
-	return res.json("Assignment aggiunto");
+	res.sendStatus(200);
+	return res.json({message: 'Assignment aggiunto'});
 };
 
 exports.getAllAssignments = function(req, res) {
@@ -22,18 +23,29 @@ exports.getAllAssignments = function(req, res) {
 		for(i = 0; i < all.length; i++)
 			if(all[i]['studentId'] == id)
 				list.push(all[i]);
-		return res.json(list);
-	} else 
+		if(list == []){
+			res.sendStatus(500);
+			return res.json({message: 'Student Id non trovato'});
+		}else{
+			res.sendStatus(200);
+			return res.json(list);
+		}
+	} else {
+		res.sendStatus(200);
 		return res.json(all);
+	}
 };
 
 exports.getAssignmentById = function(req, res) {
 	var id = req.params.id;
 	var found = Db.getById(id);
-	if (found !== undefined)
+	if (found !== undefined){
+		res.sendStatus(200);
 		return res.json(Db.getById(id));
-	else
-		return res.json("Assignment non trovato");
+	} else {
+		res.sendStatus(500);
+		return res.json({message: 'Assignment non trovato'});
+	}
 };
 
 exports.removeAssignmentById = function(req, res) {
@@ -41,9 +53,12 @@ exports.removeAssignmentById = function(req, res) {
 	var found = Db.getById(id);
 	if (found !== undefined){
 		Db.removeById(id);
-		return res.json("Assignment " + id + " eliminato");
-	}else
-		return res.json("Assignment non trovato");
+		res.sendStatus(204);
+		return res.json({message: 'Assignment ' + id + ' eliminato'});
+	} else {
+		res.sendStatus(500);
+		return res.json({message: 'Assignment non trovato'});
+	}
 };
 
 exports.updateAssignmentById = function(req, res) {	
@@ -55,7 +70,10 @@ exports.updateAssignmentById = function(req, res) {
 		assignmentContent= req.body.assignment_content;
 		obj = new assignment(id, studentId, assignmentType, assignmentContent);
 		Db.updateById(id, obj);
-		return res.json("Assignment " + id + " aggiornato");
-	}else
-		return res.json("Assignment non trovato");
+		res.sendStatus(204);
+		return res.json({message: 'Assignment ' + id + ' aggiornato'});
+	} else {
+		res.sendStatus(500);
+		return res.json({message: 'Assignment non trovato'});
+	}
 };
