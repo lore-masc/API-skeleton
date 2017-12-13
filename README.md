@@ -20,3 +20,6 @@ Sample application to demonstrate how to **develop** an **API service**
 - consegnare un assignment 							(POST - /assignment/)
 - modificare assignment 								(PUT - /assignment/:id)
 - rimuovere assignment 								(DELETE - /assignment/:id)
+
+***More details***
+Read Apiary documentation in https://assignmentapi1.docs.apiary.io/
