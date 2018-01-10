@@ -5,11 +5,18 @@
   "main": "start.js",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "node-fetch": "^1.7.3"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^22.0.5"
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverage": true
   },
   "author": "Lorenzo Masciullo",
   "license": "ISC"

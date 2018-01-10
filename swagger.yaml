@@ -54,6 +54,10 @@ paths:
           description: Ok
           schema:
             $ref: '#/definitions/AssignmentOk'
+        500:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorAddAssignment'
   /{id}:
     get:
       description: Returns a specific assignment
@@ -113,6 +117,13 @@ paths:
           schema:
             $ref: '#/definitions/ErrorAssignment'
 definitions:
+  ErrorAddAssignment:
+    required:
+      - message
+    properties:
+      message:
+        type: string
+        enum: ["Assignment non aggiunto"]
   ErrorAssignment:
     required:
       - message
@@ -130,10 +141,14 @@ definitions:
   AssignmentOk:
     required:
       - message
+      - assignmentId
     properties:
       message:
         type: string
         enum: ["Assignment aggiunto"]
+      assignmentId:
+        type: integer
+        format: int32
   NewAssignment:
     required:
       - studentId

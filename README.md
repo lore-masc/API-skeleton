@@ -13,6 +13,15 @@ Sample application to demonstrate how to **develop** an **API service**
 - assignment type
 - assignment-content
 
+### HOW TO DEPLOY APP IN HEROKU
+- heroku create
+- git push heroku master
+- heroku ps:scale web=1
+- heroku open
+
+### HOW TO RUN TEST CASES
+- npm test
+
 ***URLs***
 - leggere tutti gli assignment (GET - /assignment)
 - leggere tutti gli assignment di uno student ID  	(GET - /assignment?studentid=:id)
