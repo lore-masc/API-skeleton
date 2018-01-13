@@ -152,22 +152,22 @@ definitions:
   NewAssignment:
     required:
       - studentId
-      - assignment_type
-      - assignment_content
+      - assignmentType
+      - assignmentContent
     properties:
       studentId:
         type: integer
         format: int32
-      assignment_type:
+      assignmentType:
         type: string
-      assignment_content:
+      assignmentContent:
         type: string
   Assignment:
     required:
       - assignmentId
       - studentId
-      - assignment_type
-      - assignment_content
+      - assignmentType
+      - assignmentContent
     properties:
       assignmentId:
         type: integer
@@ -175,9 +175,9 @@ definitions:
       studentId:
         type: integer
         format: int32
-      assignment_type:
+      assignmentType:
         type: string
-      assignment_content:
+      assignmentContent:
         type: string
   DeletedOk:
     required:

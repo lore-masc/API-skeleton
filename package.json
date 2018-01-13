@@ -16,7 +16,7 @@
   },
   "jest": {
     "verbose": true,
-    "collectCoverage": true
+    "collectCoverage": false
   },
   "author": "Lorenzo Masciullo",
   "license": "ISC"

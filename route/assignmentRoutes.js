@@ -6,8 +6,8 @@ exports.sendAssignmentById = function (req, res) {
 	var new_obj, studentId, assignmentId, assignmentType, assignmentContent;
 	assignmentId = new_id;
 	studentId = req.body.studentId;
-	assignmentType = req.body.assignment_type;
-	assignmentContent= req.body.assignment_content;
+	assignmentType = req.body.assignmentType;
+	assignmentContent= req.body.assignmentContent;
  	new_obj = new assignment(assignmentId, studentId, assignmentType, assignmentContent);
  	//console.log("NODE: " + JSON.stringify(new_obj));
  	if(studentId == undefined || assignmentType == undefined || assignmentContent == undefined)
@@ -62,8 +62,8 @@ exports.updateAssignmentById = function(req, res) {
 	var found = Db.getById(id);
 	if (found !== undefined){
 		studentId = req.body.studentId;
-		assignmentType = req.body.assignment_type;
-		assignmentContent= req.body.assignment_content;
+		assignmentType = req.body.assignmentType;
+		assignmentContent= req.body.assignmentContent;
 		obj = new assignment(id, studentId, assignmentType, assignmentContent);
 		Db.updateById(id, obj);
 		return res.json({message: 'Assignment ' + id + ' aggiornato'});
