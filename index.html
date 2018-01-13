@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>API Assignment - Home Page</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" href="https://v40.pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css">
+        <script src="scriptIndex.js"></script>
+    </head>
+    <body>
+        <div class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>StudentId</label>
+                        <input id="stdIdInvia" class="form-control" placeholder="Enter student id">
+                        <label>AssignmentType</label>
+                        <input id="asTypeInvia" class="form-control" placeholder="Enter AssignmentType">
+                        <label>AssignmentContent</label>
+                        <input id="asContInvia" class="form-control" placeholder="Enter AssignmentContent">
+                        <button onclick="insertAssignment()" class="btn btn-primary">Invia</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button onclick="visualizzaAssignment()" class="btn btn-primary">Visualizza tutti gli assignment</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul id="studenti"></ul>
+        <div class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>AssignmentId che vuoi eliminare</label>
+                        <input id="elminaAssId" class="form-control" placeholder="Enter assignment id">
+                        <button onclick="eliminaAssignmentById()" class="btn btn-primary">Invia</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>AssignmentId che vuoi vedere</label>
+                        <input id="assIdsel" class="form-control" placeholder="Enter assignment id">
+                        <button onclick="visualizzaAssignmentId()" class="btn btn-primary">Invia</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul id="assignmentId"></ul>
+        <div class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>AssignmentId di cui vuoi fare l'update</label>
+                        <input id="upAssId" class="form-control" placeholder="Enter assignment id">
+                        <label>StudentId</label>
+                        <input id="upStudId" class="form-control" placeholder="Enter student id">
+                        <label>AssignmentType</label>
+                        <input id="upAsstype" class="form-control" placeholder="Enter AssignmentType">
+                        <label>AssignmentContent</label>
+                        <input id="upAssContent" class="form-control" placeholder="Enter AssignmentContent">
+                        <button onclick="updateAssignmentById()" class="btn btn-primary">Invia</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    </body>
+</html>
