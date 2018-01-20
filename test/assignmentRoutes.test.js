@@ -1,11 +1,11 @@
-const root = process.env.SERVER_URL || 'http://localhost:3000'
+const root = 'https://sleepy-citadel-35442.herokuapp.com'
 const fetch = require("node-fetch")
 const assignmentsRoot = root+'/assignment/'
 const exampleAssignment =  {
     "studentId": "544",
     "assignmentId": "12",
-    "assignment_type": "text",
-    "assignment_content": "minim"
+    "assignmentType": "text",
+    "assignmentContent": "minim"
 }
 
 const postAssignments = function (newAssignment) {
@@ -67,19 +67,19 @@ test('basic post and get', () => {
             return getOneAssignment(exampleAssignment.assignmentId)
         })
         .then(getResponse => {return getResponse.json()})
-        .then(jsonResponse => {expect(jsonResponse.assignmentContent).toEqual(exampleAssignment.assignment_content)})
+        .then(jsonResponse => {expect(jsonResponse.assignmentContent).toEqual(exampleAssignment.assignmentContent)})
         //.catch(e => {console.log(e)})
 });
 
 test('basic update and get', () => {
-    exampleAssignment.assignment_content = "after update";
+    exampleAssignment.assignmentContent = "after update";
     return putAssignments(exampleAssignment, exampleAssignment.assignmentId)
         .then(postResponse => { return postResponse.json() })
         .then(postResponseJson => {
             return getOneAssignment(exampleAssignment.assignmentId)
         })
         .then(getResponse => {return getResponse.json()})
-        .then(jsonResponse => {expect(jsonResponse.assignmentContent).toEqual(exampleAssignment.assignment_content)})
+        .then(jsonResponse => {expect(jsonResponse.assignmentContent).toEqual(exampleAssignment.assignmentContent)})
         //.catch(e => {console.log(e)})
 });
   
