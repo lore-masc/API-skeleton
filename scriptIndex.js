@@ -82,9 +82,8 @@ eliminaAssignmentById = function () {
 
     fetch(newUrl, {
         method: "DELETE",
-        mode : 'cors',
         headers: {
-        Accept: "application/json",
+            Accept: "application/json",
             "Content-Type": "application/json"
         }
     })
@@ -103,7 +102,6 @@ updateAssignmentById = function (){
 
     fetch(newUrl, {
         method: "PUT",
-        mode: 'cors',
         headers: {
         Accept: "application/json",
             "Content-Type": "application/json"
