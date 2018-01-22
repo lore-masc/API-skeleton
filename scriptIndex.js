@@ -6,7 +6,6 @@ insertAssignment = function (){
     var assignmentType = document.getElementById('asTypeInvia').value;
     var assignmentContent = document.getElementById('asContInvia').value;
 
-    console.log(studentId);
     fetch(url, {
             method: "POST",
             headers: {
@@ -18,9 +17,12 @@ insertAssignment = function (){
                 assignmentType: assignmentType,
                 assignmentContent: assignmentContent
             })
-        }).then((response) => {
-            console.log("inserito" + response);
-        });
+        })
+    .then(function(response) { return response.json(); })
+    .then(function(data) {
+        alert(data.message);
+    });
+
 }
 //creare un alert di conferma avvenuto inserimento o di errore (quest'ultimo anche nelle altre fun)
 
@@ -33,13 +35,13 @@ visualizzaAssignment = function (){
             return response.json();
         })
         .then((data) => {
-            if (ul.hasChildNodes())
+            while (ul.hasChildNodes())
                 ul.removeChild(ul.childNodes[0]);
             
             for (var i = 0; i < data.length; i++) {            
                 let li = document.createElement('li'); //  Create the elements we need
                 let span = document.createElement('span');
-                span.innerHTML = `${data[i].studentId} ${data[i].assignmentId} ${data[i].assignmentType} ${data[i].assignmentContent}`;
+                span.innerHTML = `${data[i].assignmentId} ${data[i].studentId} ${data[i].assignmentType} ${data[i].assignmentContent}`;
                 // Append all our elements
                 li.appendChild(span);
                 ul.appendChild(li);
@@ -58,15 +60,19 @@ visualizzaAssignmentId = function(){
             return response.json();
         })
         .then((data) => {
-            let li = document.createElement('li'); //  Create the elements we need
-            let span = document.createElement('span');
-            span.innerHTML = `${data.studentId} ${data.assignmentId} ${data.assignmentType}`; // Make the HTML of our span to be the first and last name of our author
-            // Append all our elements
-            li.appendChild(span);
-            if (ul.hasChildNodes()) {
-                ul.removeChild(ul.childNodes[0]);
-            } 
-            ul.appendChild(li);
+            if(data.assignmentId !== undefined){
+                let li = document.createElement('li'); //  Create the elements we need
+                let span = document.createElement('span');
+                span.innerHTML = `${data.assignmentId} ${data.studentId} ${data.assignmentType}`; // Make the HTML of our span to be the first and last name of our author
+                // Append all our elements
+                li.appendChild(span);
+                if (ul.hasChildNodes()) {
+                    ul.removeChild(ul.childNodes[0]);
+                } 
+                ul.appendChild(li);
+            }else{
+                alert(data.message);
+            }
         });
 }
 
@@ -81,8 +87,10 @@ eliminaAssignmentById = function () {
         Accept: "application/json",
             "Content-Type": "application/json"
         }
-    }).then((response) => {
-        alert("eliminato");
+    })
+    .then(function(response) { return response.json(); })
+    .then(function(data) {
+        alert(data.message);
     });
 }
 
