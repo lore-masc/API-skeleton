@@ -112,7 +112,9 @@ updateAssignmentById = function (){
             assignmentType: assignmentType,
             assignmentContent : assignmentContent
         })
-    }).then((response) => {
-        alert("aggiornato");
+    })
+    .then(function(response) { return response.json(); })
+    .then(function(data) {
+        alert(data.message);
     });
 }
