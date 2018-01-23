@@ -92,7 +92,7 @@ test('delete by assignmentID - basic response', () => {
 
 test('delete by assignmentID - item actually deleted', () => {
     return getOneAssignment(exampleAssignment.assignmentID)
-        .then(getResponse => {return getResponse.json()})
-        .then(jsonResponse => {expect(jsonResponse.message).toBe("Assignment non trovato")})
+        .then(getResponse => {return getResponse.status})
+        .then(responseStatus => {expect(responseStatus).toBe(500)})
         //.catch(e => {console.log(e)})
 });
